@@ -1,0 +1,957 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+html{
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    position: relative;
+    height: 100%;
+    background-color: #cacbd5;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+    color: #6d7076;
+    overflow: hidden;
+}
+
+h2 {
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 500;
+}
+h3{
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 500;
+}
+p{
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 300;
+}
+
+* {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#body_container {
+    height: 100%;
+    background-color: #cacbd5;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: auto;
+    z-index: 0;
+}
+
+/* datepicker calendar*/
+
+#calendar {
+    font-size: 12px;
+
+}
+
+#calendar .ui-datepicker .ui-datepicker-header{
+    background: none;
+    border: none;
+    color: #6d7076;
+    font-family: Roboto, sans-serif;
+    border-bottom: solid 2px #cdd3da;
+}
+
+.ui-datepicker .ui-datepicker-calendar thead{
+    border-bottom: solid 2px #cdd3da;
+}
+
+.ui-datepicker .ui-datepicker-calendar thead tr th span {
+    color: #6d7076;
+    border: none;
+    font-family: Roboto, sans-serif;
+}
+
+
+.ui-datepicker .ui-datepicker-calendar tbody tr td a{
+    background: none;
+    color: #6d7076;
+    border: solid 1px transparent;
+    text-align: center;
+}
+
+#calendar .ui-widget-content {
+    background: none;
+    border: none;
+}
+
+#calendar .ui-state-highlight {
+    color: #6d7076;
+    border: solid 1px #6d7076;
+    border-radius: 3px;
+    background-color: #cdd3da;
+}
+
+#calendar .markedDate .ui-state-default {
+    color: #ffffff;
+    background-color: #60990f;
+    border-radius: 3px;
+}
+
+#calendar .oldMarkedDate .ui-state-default {
+    color: #ffffff;
+    background-color: #c82829;
+    border-radius: 3px;
+}
+
+
+#calendar .ui-state-active {
+    border: solid 1px transparent;
+    border-radius: 3px;
+    background-color: #dad55e !important;
+    box-shadow: inset -1px 1px 2px 1px #9d9ead;
+}
+
+#calendar .ui-widget-header .ui-datepicker-next .ui-icon {
+    background-position-x: -33px;
+    background-position-y: 0px;
+}
+
+#calendar .ui-widget-header .ui-datepicker-prev .ui-icon {
+    background-position-x: -95px;
+    background-position-y: 0px;
+}
+
+.drop_hover {
+    border: solid 1px #cccccc;
+    background-color: #ffffff;
+}
+
+
+/*pop up add task*/
+
+.dark_filter {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.43);
+}
+
+#edit_photo {
+    color: #ffffff;
+    position: absolute;
+    float: right;
+    top: 55px;
+    right: 60px;
+    cursor: pointer;
+}
+
+.close_overlay {
+    color: #ffffff;
+    position: absolute;
+    float: right;
+    top: 55px;
+    right: 30px;
+    cursor: pointer;
+    text-shadow: 0 0 1px #6d7076;
+}
+
+#image_holder {
+    display: block;
+    position: relative;
+    max-height: 100%;
+    max-width: 100%;
+    text-shadow: 0 0 1px #6d7076;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#image_text {
+    position: absolute;
+    line-height: 40px;
+    background-color: rgba(0, 0, 0, 0.53);
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#map_holder {
+    display: block;
+    position: relative;
+    width: -moz-calc(100% - 40px);
+    width: -webkit-calc(100% - 40px);
+    width: calc(100% - 40px);
+    height: -moz-calc(100% - 90px);
+    height: -webkit-calc(100% - 90px);
+    height: calc(100% - 90px);
+    top: 70px;
+    left: 20px;
+}
+
+#map_close {
+    top: 23px;
+    left: 280px;
+    width: 20px;
+}
+
+
+#address {
+    position: absolute;
+    width: 150px;
+    height: 24px;
+    font-size: 14px;
+    top: 20px;
+    left: 20px;
+    padding-left: 10px;
+
+}
+
+#new_location {
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    font-size: 10px;
+    left: 190px;
+    top: 20px;
+    cursor: pointer;
+}
+
+
+.popup_container {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.43);
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    z-index: 3;
+}
+
+.popup {
+    width: 230px;
+    height: auto;
+    background-color: #ffffff;
+    position: absolute;
+    padding: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup_divider {
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.popup_divider h3 {
+    clear: both;
+    position: relative;
+    display: block;
+    float: left;
+}
+
+
+#close_button {
+    position: absolute;
+    margin-top: 0;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.pop_up_input {
+    border: solid 1px #6d7076;
+    clear: both;
+    position: relative;
+    display: block;
+    float: left;
+    height: 22px;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
+    width: 200px;
+}
+
+#add_image {
+    display: block;
+}
+
+#add_photo {
+    clear: both;
+    position: relative;
+    display: block;
+    float: left;
+    height: 30px;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: solid 1px #6d7076;
+    width: 210px;
+    cursor: pointer;
+}
+
+#add_photo::-webkit-file-upload-button {
+    background-color: #6d7076;
+    height: 30px;
+    font-size: 14px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+
+
+#add_task_button {
+    position: relative;
+    background-color: #60990f;
+    margin-top: 30px;
+}
+
+#edit_task_button {
+    display: none;
+    position: relative;
+    background-color: #60990f;
+    margin-top: 30px;
+}
+
+.map {
+    height: 60%;
+    width: 60%;
+    top: 50%;
+    left: 50%;
+    margin-left: -25%;
+    margin-top: -15%;
+    position: absolute;
+}
+
+/*side menu*/
+
+#back_arrow {
+    position: relative;
+    display: inline;
+    height: 20px;
+    float: right;
+    padding: 10px;
+    top:-10px;
+}
+
+#project_title {
+    display: inline;
+    height: 20px;
+    float: left;
+    line-height: 20px;
+}
+
+#black_filter {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.43);
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    z-index: 2;
+}
+
+
+#side_menu {
+    display: none;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-image:
+    linear-gradient(
+            #eaeef3, #e7ebf0
+    );
+    position: fixed;
+    border-right: solid 1px #9d9ead;
+    box-shadow: 2px 0 3px  #9d9ead;
+    z-index: 4;
+}
+
+#profile {
+    top: 0;
+    left: 0;
+    display: block;
+    width: 240px;
+    height: 40px;
+    position: relative;
+    padding: 15px 5px 15px 5px;
+}
+
+#search_container {
+    display: inline;
+    height: 20px;
+    width: 220px;
+    padding: 3px;
+    float: left;
+    border: solid 2px #b9bdc6;
+    border-radius: 5px;
+    margin-left: 3px;
+}
+
+#search_icon {
+    position: relative;
+    display: inline;
+    float: left;
+    height: 16px;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+#search {
+    float: left;
+    height: 18px;
+    width: 70%;
+    margin-left: 2px;
+    text-align: left;
+    border: none;
+    border-radius: 2px;
+    border-left: solid 2px #b9bdc6;
+    background: none;
+    padding-left: 2px;
+    font-size: 14px;
+}
+
+/*projects list*/
+
+#projects_title_menu {
+    position: relative;
+    display: block;
+    width: 240px;
+    height: 20px;
+    padding: 10px 0 10px 10px;
+    background-image:
+    linear-gradient(
+            #d7dee5, #bfc5cc
+    );
+    border-top: solid 2px #cdd3da;
+    border-bottom: solid 2px #cdd3da;
+}
+
+
+
+.projects {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: -moz-calc(100% - 340px);
+    height: -webkit-calc(100% - 340px);
+    height: calc(100% - 340px);
+    overflow-x: hidden;
+    overflow-y: scroll !important;
+}
+
+.projects_list {
+    position: relative;
+    display: block;
+    width: 235px;
+    height: 30px;
+    padding: 10px 5px 10px 10px;
+}
+
+.active {
+    color: #60990f;
+}
+
+
+.folder_icon {
+    height: 22px;
+    display: inline;
+    position: relative;
+    float: left;
+    cursor: pointer;
+}
+
+.projects_name {
+    height: 24px;
+    width: 140px;
+    display: inline;
+    position: relative;
+    float: left;
+    padding-left: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.projects_name_editor {
+    display: none;
+    height: 24px;
+    width: 140px;
+    position: relative;
+    float: left;
+    padding-left: 5px;
+    border: none;
+    background: none;
+    font-size: 14px;
+    text-align: left;
+    margin-top: -2px;
+}
+
+
+.counter {
+    height: 20px;
+    width: 26px;
+    display: inline;
+    position: relative;
+    padding-top: 2px;
+    float: left;
+    margin-left: 5px;
+    border-radius: 24px;
+    border: solid 2px #cdd3da ;
+    text-align: center;
+    background-color: #b4becb;
+    color: #ffffff;
+}
+
+.delete_icon {
+    height: 20px;
+    display: inline;
+    position: relative;
+    float: left;
+    cursor: pointer;
+    padding: 3px 0 0 5px;
+
+}
+/*Add new project*/
+
+#add_project {
+    float: left;
+    position: absolute;
+    display: block;
+    width: 235px;
+    height: 22px;
+    padding: 9px 5px 9px 10px;
+    border-top: solid 2px #cdd3da;
+    border-bottom: solid 2px #cdd3da;
+}
+
+.plus_icon {
+    float: left;
+    display: inline;
+    height: 20px;
+    cursor: pointer;
+}
+
+#add_list {
+    float: left;
+    display: inline;
+    padding: 0 0 0 0 ;
+    border: none;
+    background:none;
+    height: 22px;
+    width: 190px;
+    text-align: center;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+#calendar_container {
+    position: relative;
+    display: block;
+    top: 50px;
+    padding: 0 25px 0 5px;
+}
+
+#view_icon {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 20px;
+    padding: 3px;
+    border-radius: 2px;
+    z-index: 4;
+    cursor: pointer;
+}
+
+#view_icon:active {
+    box-shadow: inset -1px 1px 2px 1px #9d9ead;
+}
+
+
+/*on all input elements*/
+
+*:focus{
+    outline: none;
+}
+
+/*tasks container*/
+
+#main_container {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    height: -moz-calc(100% - 3px);
+    height: -webkit-calc(100% - 3px);
+    height: calc(100% - 3px);
+    width: -moz-calc(100% - 6px);
+    width: -webkit-calc(100% - 6px);
+    width: calc(100% - 6px);
+}
+
+#all_tasks {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: -moz-calc(100% - 3px);
+    height: -webkit-calc(100% - 3px);
+    height: calc(100% - 3px);
+    background-color: #ffffff;
+    box-shadow: 2px 2px 5px #aaabb3;
+    border-radius: 5px;
+}
+
+/*tasks header and share button*/
+
+#tasks_header {
+    height: 40px;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    border-bottom: solid 2px #ffd5d5;
+    margin-bottom: 3px;
+}
+
+#side_menu_collapsed {
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    float: left;
+    padding-left: 10px;
+    display: inline;
+}
+
+#menu_icon {
+    display: inline;
+    width: 30px;
+}
+
+#all_tasks_title {
+    line-height: 30px;
+    height: 30px;
+    position: relative;
+    display: inline;
+    float: left;
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+#share_button {
+    height: 20px;
+    width: 60px;
+    position: relative;
+    display: inline;
+    float: right;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.share_icon {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    display: inline;
+    float: left;
+}
+
+#share_tasks {
+    line-height: 20px;
+    height: 20px;
+    position: relative;
+    display: inline;
+    float: right;
+}
+
+/*tasks and tasks descriptions*/
+
+.tasks_wrapper_input {
+    position: relative;
+    display: block;
+    width: 100%;
+    height:40px;
+    border-top: solid 2px #ffd5d5;
+    cursor: pointer;
+}
+
+#task_name_input {
+    width: 160px;
+    height: 36px;
+    font-size: 24px;
+    padding-left: 5px;
+    outline: none;
+    border: none
+}
+
+.edit_name_input {
+    width: 160px;
+    height: 36px;
+    font-size: 24px;
+    padding-left: 5px;
+    outline: none;
+    border: none;
+    display: none;
+}
+
+.tasks_wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: -moz-calc(100% - 122px);
+    height: -webkit-calc(100% - 122px);
+    height: calc(100% - 122px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.no_tasks {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.task_container {
+    position: relative;
+    height: 40px;
+    width: 100%;
+    border-bottom: solid 1px #ffd5d5;
+    display: block;
+    clear: both;
+    cursor: pointer;
+}
+
+#input_task_container {
+    height: 40px;
+}
+
+.task_container_hidden {
+    display: none;
+}
+
+.checkbox_holder {
+    float: left;
+    height: 20px;
+    width: 20px;
+    padding: 10px 10px 10px 10px;
+    display: inline;
+    border-right: solid 2px #ffd5d5;
+}
+
+#input_checkbox_holder {
+    height: 20px;
+}
+
+.checkbox {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.task_name {
+    float: left;
+    display: block;
+    height: 30px;
+    width: 100px;
+    line-height: 30px;
+    padding: 5px 5px 3px 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.task_description {
+    float: right;
+    display: inline;
+    height: 30px;
+    line-height: 30px;
+    width: 130px;
+    padding: 5px 5px 5px 5px;
+}
+
+
+.clock_icon {
+    position: relative;
+    display: inline;
+    float: left;
+    height: 22px;
+    width: 22px;
+    padding-top: 2px;
+    cursor: pointer;
+}
+
+.photo_icon{
+    display: inline;
+    float: left;
+    height: 22px;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.map_icon {
+    display: inline;
+    float: left;
+    height: 22px;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.time {
+    position: relative;
+    display: inline;
+    float: left;
+    height: 22px;
+    line-height: 22px;
+    width: 45px;
+    padding: 2px;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.done {
+    color: #bfc5cc;
+    font-weight: 300;
+    text-decoration: line-through;
+}
+
+.overdue {
+    color: #c82829;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.projects_list.hovering{
+    background-color: #ffffff;
+}
+
+
+.delete_icon_task {
+    height: 18px;
+    display: inline;
+    position: relative;
+    float: left;
+    cursor: pointer;
+    padding: 3px 0 0 5px;
+}
+
+/*bottom shadows on the tasks page */
+
+#pages_shadow {
+    display: block;
+    height: 15px;
+    width: 100%;
+    position: relative;
+    clear: both;
+}
+
+.grey_line {
+    width: 100%;
+    height: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 2px 3px #aaabb3;
+}
+
+/*bottom bar with buttons and search bar*/
+
+#footer {
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    width: -moz-calc(100% - 5px);
+    width: -webkit-calc(100% - 5px);
+    width: calc(100% - 5px);
+    height: 30px;
+    background-color: #ebf0f5;
+    z-index: -1;
+    box-shadow: 0 -2px 3px  #aaabb3;
+    padding: 10px 0 10px 5px;
+}
+
+.big_buttons {
+    display: inline;
+    height: 30px;
+    width: 60px;
+    padding: 5px 10px 5px 5px;
+    margin-right: 3px;
+    margin-left: 3px;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.24);
+    border-radius: 5px;
+    border: none;
+    color: #ffffff;
+    font-size: 10px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 10px;
+    float: left;
+    word-wrap:break-word;
+}
+
+.big_buttons:active {
+    box-shadow: none;
+}
+
+#add_button {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    display: none;
+    height: 20px;
+    line-height: 20px;
+    width: 110px;
+    font-size: 16px;
+    float: right;
+    margin-right: 5px;
+    color: #6d7076;
+    text-align: center;
+}
+
+
+.button_icon_add {
+    border: solid 2px #60990f ;
+    border-radius: 10px;
+
+    height: 16px;
+    display: inline;
+    position: relative;
+    float: left;
+
+}
+
+
+

@@ -1,0 +1,889 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+html{
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    height: 100%;
+    background-color: #cacbd5;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+    color: #6d7076;
+}
+
+* {
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: -moz-none;
+-o-user-select: none;
+user-select: none;
+}
+
+
+.ui-widget.ui-corner-top.ui-chatbox {
+    border: none;
+}
+
+
+/* datepicker calendar*/
+
+#calendar {
+    font-size:14px;
+
+}
+#calendar .ui-datepicker .ui-datepicker-header{
+    background: none;
+    border: none;
+    color: #6d7076;
+    font-family: Roboto, sans-serif;
+    border-bottom: solid 2px #cdd3da;
+}
+
+.ui-datepicker .ui-datepicker-calendar thead{
+    border-bottom: solid 2px #cdd3da;
+}
+
+.ui-datepicker .ui-datepicker-calendar thead tr th span {
+    color: #6d7076;
+    border: none;
+    font-family: Roboto, sans-serif;
+}
+
+
+.ui-datepicker .ui-datepicker-calendar tbody tr td a{
+    background: none;
+    color: #6d7076;
+    border: solid 1px transparent;
+    text-align: center;
+}
+
+#calendar .ui-widget-content {
+    background: none;
+    border: none;
+}
+
+#calendar .ui-state-highlight {
+    color: #6d7076;
+    border: solid 1px #6d7076;
+    border-radius: 3px;
+    background-color: #cdd3da;
+}
+
+#calendar .markedDate .ui-state-default {
+    color: #ffffff;
+    background-color: #60990f;
+    border-radius: 3px;
+}
+
+#calendar .oldMarkedDate .ui-state-default {
+    color: #ffffff;
+    background-color: #c82829;
+    border-radius: 3px;
+}
+
+
+#calendar .ui-state-active {
+    border: solid 1px transparent;
+    border-radius: 3px;
+    background-color: #dad55e !important;
+    box-shadow: inset -1px 1px 2px 1px #9d9ead;
+}
+
+#calendar .ui-widget-header .ui-datepicker-next .ui-icon {
+    background-position-x: -33px;
+    background-position-y: 0px;
+}
+
+#calendar .ui-widget-header .ui-datepicker-prev .ui-icon {
+    background-position-x: -95px;
+    background-position-y: 0px;
+}
+
+.drop_hover {
+    border: solid 1px #cccccc;
+    background-color: #ffffff;
+}
+
+
+/*pop up add task*/
+
+.dark_filter {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.43);
+}
+
+#edit_photo {
+    color: #ffffff;
+    position: absolute;
+    float: right;
+    top: 90px;
+    right: 80px;
+    cursor: pointer;
+    text-shadow: 0 0 1px #6d7076;
+}
+
+.close_overlay {
+    color: #ffffff;
+    position: absolute;
+    float: right;
+    top: 91px;
+    right: 40px;
+    cursor: pointer;
+    text-shadow: 0 0 1px #6d7076;
+}
+
+#image_holder {
+    display: block;
+    position: relative;
+    max-height: 100%;
+    max-width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    -ms-transform: translate(-50%,-50%);
+}
+
+#image_text {
+    position: absolute;
+    line-height: 40px;
+    background-color: rgba(0, 0, 0, 0.53);
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#map_holder {
+    display: block;
+    position: relative;
+    width: -moz-calc(100% - 80px);
+    width: -webkit-calc(100% - 80px);
+    width: calc(100% - 80px);
+    height: -moz-calc(100% - 140px);
+    height: -webkit-calc(100% - 140px);
+    height: calc(100% - 140px);
+    top: 100px;
+    left: 40px;
+}
+
+#map_close {
+    top: 55px;
+    width: 20px;
+}
+
+
+#address {
+    position: absolute;
+    width: 350px;
+    height: 30px;
+    font-size: 18px;
+    top: 50px;
+    left: 40px;
+    padding-left: 10px;
+
+}
+
+#new_location {
+    position: absolute;
+    width: 100px;
+    height: 36px;
+    font-size: 12px;
+    left: 420px;
+    top: 50px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.popup_container {
+   display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.43);
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    z-index: 4;
+}
+
+.popup {
+     width: 400px;
+     height: auto;
+     background-color: #ffffff;
+     position: absolute;
+     padding: 20px;
+     left: 50%;
+     top: 50%;
+     transform: translate(-50%, -50%);
+ }
+
+.popup_divider {
+    height: 70px;
+}
+
+.popup_divider h3 {
+    clear: both;
+    position: relative;
+    display: block;
+    float: left;
+}
+
+
+#close_button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+
+.pop_up_input {
+    clear: both;
+    position: relative;
+    display: block;
+    float: left;
+    height: 22px;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
+    width: 200px;
+}
+
+#add_image {
+    display: block;
+}
+
+#add_photo {
+    clear: both;
+    position: relative;
+    display: block;
+    float: left;
+    height: 30px;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: solid 1px #6d7076;
+    width: 210px;
+    cursor: pointer;
+}
+
+#add_photo::-webkit-file-upload-button {
+    background-color: #6d7076;
+    height: 30px;
+    font-size: 14px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+
+
+
+#add_task_button {
+    position: relative;
+    background-color: #60990f;
+    margin-top: 10px;
+}
+
+#edit_task_button {
+    display: none;
+    width: 80px;
+    position: relative;
+    background-color: #60990f;
+    margin-top: 10px;
+}
+
+.map {
+    height: 60%;
+    width: 60%;
+    top: 50%;
+    left: 50%;
+    margin-left: -25%;
+    margin-top: -15%;
+    position: absolute;
+}
+
+/*side menu*/
+
+#back_arrow {
+    display: none;
+}
+
+#side_menu {
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    background-image:
+    linear-gradient(
+            #eaeef3, #e7ebf0
+    );
+    position: absolute;
+    border-right: solid 1px #9d9ead;
+    box-shadow: 2px 0 3px  #9d9ead;
+    z-index: 2;
+}
+
+#profile {
+    top: 0;
+    left: 0;
+    display: block;
+    width: 270px;
+    height: 60px;
+    position: relative;
+    padding: 20px 10px 10px 20px;
+}
+
+#search_container {
+    display: inline;
+    height: 26px;
+    width: 245px;
+    padding: 5px;
+    float: left;
+    border: solid 2px #b9bdc6;
+    border-radius: 5px;
+}
+
+#search_icon {
+    position: relative;
+    display: inline;
+    float: left;
+    height: 26px;
+    cursor: pointer;
+}
+
+#search {
+    float: left;
+    height: 21px;
+    width: 80%;
+    margin-left: 5px;
+    text-align: left;
+    border: none;
+    border-radius: 2px;
+    border-left: solid 2px #b9bdc6;
+    background: none;
+    padding-left: 5px;
+    font-size: 20px;
+}
+
+/*projects list*/
+
+#projects_title_menu {
+    position: relative;
+    display: block;
+    width: 280px;
+    height: 23px;
+    padding: 15px 0 15px 20px;
+    background-image:
+    linear-gradient(
+        #d7dee5, #bfc5cc
+    );
+    border-top: solid 2px #cdd3da;
+    border-bottom: solid 2px #cdd3da;
+}
+
+
+
+.projects {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: -moz-calc(100% - 400px);
+    height: -webkit-calc(100% - 400px);
+    height: calc(100% - 400px);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+
+.projects_list {
+    position: relative;
+    display: block;
+    width: 270px;
+    height: 23px;
+    padding: 15px 10px 15px 20px;
+}
+
+.active {
+     color: #60990f;
+ }
+
+
+.folder_icon {
+    height: 23px;
+    display: inline;
+    position: relative;
+    float: left;
+    cursor: pointer;
+}
+
+.projects_name {
+    height: 23px;
+    width: 170px;
+    display: inline;
+    position: relative;
+    float: left;
+    padding-left: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.projects_name_editor {
+    display: none;
+    height: 23px;
+    width: 170px;
+    position: relative;
+    float: left;
+    padding-left: 10px;
+    border: none;
+    background: none;
+    font-size: 18px;
+}
+
+.counter {
+    height: 20px;
+    width: 30px;
+    display: inline;
+    position: relative;
+    float: left;
+    margin-left: 5px;
+    border-radius: 12px;
+    border: solid 2px #cdd3da ;
+    text-align: center;
+    background-color: #b4becb;
+    color: #ffffff;
+}
+
+.delete_icon {
+    height: 17px;
+    display: inline;
+    position: relative;
+    float: left;
+    cursor: pointer;
+    padding: 3px 0 0 5px;
+
+}
+/*Add new project*/
+
+#add_project {
+    float: left;
+    position: fixed;
+    display: block;
+    width: 270px;
+    height: 23px;
+    padding: 15px 10px 15px 20px;
+    border-top: solid 2px #cdd3da;
+    border-bottom: solid 2px #cdd3da;
+}
+
+.plus_icon {
+    float: left;
+    display: inline;
+    height: 23px;
+    cursor: pointer;
+}
+
+#add_list {
+    float: left;
+    display: inline;
+    padding: 0 0 0 0 ;
+    border: none;
+    background:none;
+    height: 23px;
+    width: 210px;
+    text-align: center;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+#calendar_container {
+    position: relative;
+    display: block;
+    top: 60px;
+    padding: 0 25px ;
+}
+
+#view_icon {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 20px;
+    padding: 3px;
+    border-radius: 2px;
+    z-index: 4;
+    cursor: pointer;
+}
+
+#view_icon:active {
+    box-shadow: inset -1px 1px 2px 1px #9d9ead;
+}
+
+
+
+/*on all input elements*/
+
+*:focus{
+    outline: none;
+}
+
+/*tasks container*/
+
+#side_menu_collapsed {
+    display: none;
+}
+
+#main_container {
+    position: absolute;
+    top: 20px;
+    left: 320px;
+    height: -moz-calc(100% - 20px);
+    height: -webkit-calc(100% - 20px);
+    height: calc(100% - 20px);
+    width: -moz-calc(100% - 340px);
+    width: -webkit-calc(100% - 340px);
+    width: calc(100% - 340px);
+}
+
+#all_tasks {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: -moz-calc(100% - 20px);
+    height: -webkit-calc(100% - 20px);
+    height: calc(100% - 20px);
+    background-color: #ffffff;
+    box-shadow: 2px 2px 5px #aaabb3;
+    border-radius: 10px;
+}
+
+/*tasks header and share button*/
+
+#tasks_header {
+    height: 29px;
+    width: 100%;
+    padding: 15px 0 15px 0;
+    border-bottom: solid 2px #ffd5d5;
+    margin-bottom: 3px;
+}
+
+#all_tasks_title {
+    height: 29px;
+    position: relative;
+    display: inline;
+    float: left;
+    padding-left: 20px;
+}
+
+#share_button {
+    height: 29px;
+    width: 85px;
+    position: relative;
+    display: inline;
+    float: right;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.share_icon {
+    height: 29px;
+    width: 29px;
+    position: relative;
+    display: inline;
+    float: left;
+}
+
+#share_tasks {
+    padding-top: 3px;
+    height: 23px;
+    position: relative;
+    display: inline;
+    float: right;
+}
+
+/*tasks and tasks descriptions*/
+
+.tasks_wrapper_input {
+    position: relative;
+    display: block;
+    width: 100%;
+    height:43px;
+    border-top: solid 2px #ffd5d5;
+    cursor: pointer;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#task_name_input {
+    width: 55%;
+    min-width: 250px;
+    height: 22px;
+    font-size: 18px;
+    padding-left: 13px;
+    margin-top: 10px;
+    outline: none;
+    border: none;
+}
+
+.edit_name_input {
+    width: 55%;
+    min-width: 250px;
+    height: 22px;
+    font-size: 18px;
+    padding-left: 13px;
+    margin-top: 10px;
+    outline: none;
+    border: none;
+    display: none;
+}
+
+
+.tasks_wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: -moz-calc(100% - 125px);
+    height: -webkit-calc(100% - 125px);
+    height: calc(100% - 125px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.no_tasks {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.task_container {
+    position: relative;
+    height: 42px;
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: solid 1px #ffebeb;
+    display: block;
+    clear: both;
+}
+
+.task_container_hidden {
+    display: none;
+}
+
+.checkbox_holder {
+    float: left;
+    height: 23px;
+    width: 23px;
+    padding: 10px 15px 10px 15px;
+    display: inline;
+    border-right: solid 2px #ffd5d5;
+}
+
+.checkbox {
+    height: 23px;
+    width: 23px;
+    cursor: pointer;
+}
+
+.task_name {
+    float: left;
+    display: inline;
+    height: 23px;
+    width: 55%;
+    min-width: 250px;
+    padding: 10px 15px 10px 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.task_description {
+    float: right;
+    display: inline;
+    height: 23px;
+    width: 160px;
+    padding: 10px 15px 10px 15px;
+}
+
+.clock_icon {
+    display: inline;
+    float: left;
+    height: 18px;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.photo_icon{
+    display: inline;
+    float: left;
+    height: 18px;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.map_icon {
+    display: inline;
+    float: left;
+    height: 18px;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.time {
+    display: inline;
+    float: left;
+    height: 23px;
+    width: 60px;
+    margin-left: 2px;
+    padding-top: 2px;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.done {
+    color: #bfc5cc;
+    font-weight: 300;
+    text-decoration: line-through;
+}
+
+.overdue {
+    color: #c82829;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.projects_list.hovering{
+    background-color: #ffffff;
+}
+
+
+
+.delete_icon_task {
+    height: 17px;
+    display: inline;
+    position: relative;
+    float: left;
+    cursor: pointer;
+    padding: 3px 0 0 5px;
+}
+
+/*bottom shadows on the tasks page */
+
+#pages_shadow {
+    display: block;
+    height: 15px;
+    width: 100%;
+    position: relative;
+    clear: both;
+}
+
+.grey_line {
+    width: 100%;
+    height: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 2px 3px #aaabb3;
+}
+
+/*bottom bar with buttons and search bar*/
+
+#footer {
+    left: 300px;
+    position: absolute;
+    bottom: 0;
+    width: -moz-calc(100% - 320px);
+    width: -webkit-calc(100% - 320px);
+    width: calc(100% - 320px);
+    height: 40px;
+    background-color: #ebf0f5;
+    z-index: 1;
+    box-shadow: 0 -2px 3px  #aaabb3;
+    padding: 25px 0 25px 20px;
+}
+
+.big_buttons {
+    display: inline;
+    height: 40px;
+    width: 160px;
+    padding: 10px;
+    margin-right: 20px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
+    border-radius: 5px;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    line-height:20px;
+    float: left;
+}
+
+.big_buttons:active {
+    box-shadow: none;
+}
+
+#add_button {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    display: inline;
+    height: 30px;
+    width: 140px;
+    font-size: 20px;
+    float: right;
+    margin-right: 10px;
+    color: #6d7076;
+}
+
+.button_icon {
+    margin-top: -4px;
+    height: 28px;
+    display: inline;
+    position: relative;
+    float: left;
+
+}
+
+.button_icon_add {
+    border: solid 2px #60990f ;
+    border-radius: 13px;
+    margin-top: -4px;
+    height: 22px;
+    display: inline;
+    position: relative;
+    float: left;
+
+}
+
