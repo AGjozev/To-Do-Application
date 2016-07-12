@@ -424,9 +424,9 @@ p{
     position: relative;
     display: block;
     width: 100%;
-    height: -moz-calc(100% - 310px);
-    height: -webkit-calc(100% - 310px);
-    height: calc(100% - 310px);
+    height: -moz-calc(100% - 325px);
+    height: -webkit-calc(100% - 325px);
+    height: calc(100% - 325px);
     overflow-y: auto;
     overflow-x: hidden;
 
