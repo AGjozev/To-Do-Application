@@ -70,10 +70,7 @@ p{
 /* datepicker calendar*/
 
 #calendar {
-    position: relative;
     font-size: 12px;
-    float: left;
-    left: 5px;
 
 }
 
@@ -590,14 +587,13 @@ p{
 }
 
 #view_icon {
-    position: relative;
-    float: right;
+    position: absolute;
     top: 2px;
-    right: 2px;
+    left: 220px;
     width: 20px;
     padding: 3px;
     border-radius: 2px;
-    z-index: 4;
+    z-index: 5;
     cursor: pointer;
 }
 
