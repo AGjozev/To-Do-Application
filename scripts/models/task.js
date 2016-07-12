@@ -10,8 +10,13 @@ function Task(name, dueDate, folderId, position, photo) {
     me.dueDate = dueDate;
     me.isCompleted = false;
 
-    me.lat = 41.9958009;
-    me.lng = 21.4310132;
+    if(plugIns.lat !== undefined && plugIns.lng !== undefined) {
+        me.lat = plugIns.lat;
+        me.lng = plugIns.lng;
+    }else {
+        me.lat = 41.9958009;
+        me.lng = 21.4310132;
+    }
 
     me.parentFolder = function () {
         return folderId;
@@ -57,4 +62,6 @@ function Task(name, dueDate, folderId, position, photo) {
     };
 
     return me;
+
+
 }

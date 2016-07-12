@@ -10,7 +10,6 @@ var ProjectTaskManager = (function () {
     me.addNewProject = function (name) {
         var newProject = new Folder(name);
         storageData.populateStorage(newProject);
-        //render.all();
         $(document).trigger('newProjectAdded');
     };
 
@@ -39,8 +38,6 @@ var ProjectTaskManager = (function () {
         var projectNew = storageData.getProject(newFolderId);
         projectNew.todos.push(taskHolder);
         storageData.populateStorage(projectNew);
-        //  render.renderProjects();
-        //   sendTasksToRender(oldFolderId);
         $(document).trigger('taskMovedToAnotherProject');
     };
 
@@ -84,7 +81,6 @@ var ProjectTaskManager = (function () {
                 project.todos.splice(i, 1);
         }
         storageData.populateStorage(project);
-        //  render.renderProjects();
         $(document).trigger('taskDeletedFromStorage');
     };
 
@@ -96,7 +92,6 @@ var ProjectTaskManager = (function () {
         var project = storageData.getProject(folderId);
         project.addTask(newTask);
         storageData.populateStorage(project);
-        //  render.all();
         $(document).trigger('newTaskAdded');
     };
 
@@ -111,7 +106,6 @@ var ProjectTaskManager = (function () {
             }
         }
         storageData.populateStorage(project);
-        //   sendTasksToRender(folderId);
     };
 
     me.editTaskPhoto = function (taskId, folderId, imageCode) {
@@ -149,7 +143,6 @@ var ProjectTaskManager = (function () {
             }
         }
         storageData.populateStorage(project);
-        // sendTasksToRender(folderId);
     };
 
     me.checkTask = function (folderId, taskId) {
@@ -182,17 +175,21 @@ var ProjectTaskManager = (function () {
     me.deactivateAll = function () {
         for (var i = 0; i < localStorage.length; i++) {
             var key = localStorage.key(i);
-            var project = storageData.getProject(key);
-            project.setClass(false);
-            storageData.populateStorage(project);
+            var strIndex = key.indexOf('todoapp');
+            if (strIndex >= 0) {
+                var project = storageData.getProject(key);
+                project.setClass(false);
+                storageData.populateStorage(project);
+            }
         }
     };
 
     me.activeFolder = function (x) {
-        if (localStorage.length == 0) {
+        var projects = storageData.getAllProjects();
+        if (!projects.length) {
             return;
         }
-        var activeId = JSON.stringify(x.data('id'));
+        var activeId = x.data('id');
         me.deactivateAll();
         var thisProject = storageData.getProject(activeId);
         thisProject.setClass(true);
@@ -205,10 +202,13 @@ var ProjectTaskManager = (function () {
         var tasks = [];
         for (var i = 0, len = localStorage.length; i < len; i++) {
             var key = localStorage.key(i);
-            var project = storageData.getProject(key);
-            var todo = project.getTasks();
-            for (var j = 0; j < todo.length; j++) {
-                tasks.push(todo[j]);
+            var strIndex = key.indexOf('todoapp');
+            if (strIndex >= 0) {
+                var project = storageData.getProject(key);
+                var todo = project.getTasks();
+                for (var j = 0; j < todo.length; j++) {
+                    tasks.push(todo[j]);
+                }
             }
         }
         return tasks;

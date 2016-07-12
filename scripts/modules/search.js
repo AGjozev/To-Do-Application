@@ -22,7 +22,9 @@ function Search() {
             var taskNameArr = $taskName[i].textContent.split(separator);
             for (var j = 0; j < taskNameArr.length; j++) {
                 for (var x = 0; x < searchTermsArr.length; x++) {
-                    if (searchTermsArr[x].toLowerCase() === taskNameArr[j].toLowerCase()) {
+                    var str = taskNameArr[j].toLowerCase();
+                    var word = searchTermsArr[x].toLowerCase();
+                    if (str.indexOf(word) >= 0) {
                         counter++;
                     }
                 }
