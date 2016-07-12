@@ -61,9 +61,9 @@
                     $("#calendar_container").css("display", "block");
                     $("#add_project").css("border-bottom", "solid 2px #cdd3da");
                     $projects.css({
-                        "height": "-moz-calc(100% - 310px)",
-                        "height": "-webkit-calc(100% - 310px)",
-                        "height": "calc(100% - 310px)"
+                        "height": "-moz-calc(100% - 325px)",
+                        "height": "-webkit-calc(100% - 325px)",
+                        "height": "calc(100% - 325px)"
                     })
                 }
 
@@ -71,9 +71,9 @@
                     $("#calendar_container").css("display", "block");
                     $("#add_project").css("border-bottom", "solid 2px #cdd3da");
                     $projects.css({
-                        "height": "-moz-calc(100% - 340px)",
-                        "height": "-webkit-calc(100% - 340px)",
-                        "height": "calc(100% - 340px)"
+                        "height": "-moz-calc(100% - 355px)",
+                        "height": "-webkit-calc(100% - 355px)",
+                        "height": "calc(100% - 355px)"
                     })
                 }
 
@@ -81,9 +81,9 @@
                     $("#calendar_container").css("display", "block");
                     $("#add_project").css("border-bottom", "solid 2px #cdd3da");
                     $projects.css({
-                        "height": "-moz-calc(100% - 400px)",
-                        "height": "-webkit-calc(100% - 400px)",
-                        "height": "calc(100% - 400px)"
+                        "height": "-moz-calc(100% - 415px)",
+                        "height": "-webkit-calc(100% - 415px)",
+                        "height": "calc(100% - 415px)"
                     })
                 }
 

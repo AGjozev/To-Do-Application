@@ -416,9 +416,9 @@ user-select: none;
     position: relative;
     display: block;
     width: 100%;
-    height: -moz-calc(100% - 400px);
-    height: -webkit-calc(100% - 400px);
-    height: calc(100% - 400px);
+    height: -moz-calc(100% - 415px);
+    height: -webkit-calc(100% - 415px);
+    height: calc(100% - 415px);
     overflow-y: auto;
     overflow-x: hidden;
 
