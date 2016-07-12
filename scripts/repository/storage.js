@@ -9,7 +9,7 @@ var storageData = (function () {
 
     me.populateStorage = function (newProject) {
         var project = JSON.stringify(newProject);
-        var id = JSON.stringify(newProject.getId());
+        var id = newProject.getId();
         localStorage.setItem(id, project);
     };
 
@@ -25,8 +25,11 @@ var storageData = (function () {
         var projectsInStorage = [];
         for (var i = 0, len = localStorage.length; i < len; i++) {
             var key = localStorage.key(i);
-            var project = me.getProject(key);
-            projectsInStorage.push(project);
+            var strIndex = key.indexOf('todoapp');
+            if (strIndex >= 0) {
+                var project = me.getProject(key);
+                projectsInStorage.push(project);
+            }
         }
         return projectsInStorage;
     };
@@ -46,14 +49,17 @@ var storageData = (function () {
         var dates = [];
         for (var i = 0, len = localStorage.length; i < len; i++) {
             var key = localStorage.key(i);
-            var obj = localStorage.getItem(key);
-            var folder = JSON.parse(obj);
-            var project = storageData.rebuildProject(folder);
-            var todo = project.getTasks();
-            for (var j = 0; j < todo.length; j++) {
-                var day = todo[j].dueDate;
-                if (todo[j].isCompleted == false) {
-                    dates.push(day);
+            var strIndex = key.indexOf('todoapp');
+            if (strIndex >= 0) {
+                var obj = localStorage.getItem(key);
+                var folder = JSON.parse(obj);
+                var project = storageData.rebuildProject(folder);
+                var todo = project.getTasks();
+                for (var j = 0; j < todo.length; j++) {
+                    var day = todo[j].dueDate;
+                    if (todo[j].isCompleted == false) {
+                        dates.push(day);
+                    }
                 }
             }
         }
@@ -83,11 +89,14 @@ var storageData = (function () {
         var allTasksInStorage = [];
         for (var i = 0, len = localStorage.length; i < len; i++) {
             var key = localStorage.key(i);
-            var project = storageData.getProject(key);
-            for (var j = 0, lent = project.todos.length; j < lent; j++) {
-                var todo = project.todos[j];
-                var task = me.rebuildTask(todo);
-                allTasksInStorage.push(task);
+            var strIndex = key.indexOf('todoapp');
+            if (strIndex >= 0) {
+                var project = storageData.getProject(key);
+                for (var j = 0, lent = project.todos.length; j < lent; j++) {
+                    var todo = project.todos[j];
+                    var task = me.rebuildTask(todo);
+                    allTasksInStorage.push(task);
+                }
             }
         }
         return allTasksInStorage;

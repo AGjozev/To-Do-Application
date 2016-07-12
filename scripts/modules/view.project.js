@@ -116,7 +116,7 @@ function ProjectView() {
 
             } else {
                 if (e.which == 27) {
-                    removeNameEditor();
+                    removeEditor();
                 }
             }
         }); //change project name on enter or cancel on esc

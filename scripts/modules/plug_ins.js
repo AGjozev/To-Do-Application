@@ -5,6 +5,12 @@
 var plugIns = (function() {
     var me={};
 
+    navigator.geolocation.getCurrentPosition(function(location) {
+        me.lat = location.coords.latitude;
+        me.lng = location.coords.longitude;
+
+    });
+
     $(function () {
         $("#add_date").datepicker({
             dateFormat: 'M dd',

@@ -6,9 +6,11 @@
 
 function Folder(folderName) {
     var me = {};
-    var id = (new Date()).getTime();
+    var id = 'todoapp'+JSON.stringify((new Date()).getTime());
+    console.log(id);
     var name = folderName;
     var position = localStorage.length + 1;
+
     me.todos = [];
 
     me.getId = function () {

@@ -13,6 +13,56 @@ var render = (function () {
     var $message = $("<h2 class='no_tasks'>This project is empty!</h2>");
 
 
+    me.renderProjects = function () {
+        $('.projects').empty();
+        var projects = storageData.getAllProjects();
+        if (!projects.length) {
+            $(document).trigger('emptyStorage');
+        } else {
+
+
+            renderProjects(projects);
+        }
+    };
+
+    me.renderTasks = function () {
+        $tasks.empty();
+        var projects = storageData.getAllProjects();
+        if (!projects.length)
+            return;
+
+        var folderId = storageData.getActiveProject();
+        if (folderId == undefined)
+        return;
+        var tasks = storageData.getAllTasksForProject(folderId);
+        if (tasks.length == 0 && folderId) {
+            $tasks.append($message);
+        } else {
+            if (!folderId) {
+                return;
+            } else {
+                $message.remove();
+                renderTasks(tasks);
+            }
+        }
+    };
+
+    me.all = function () {
+        me.renderProjects();
+        me.renderTasks();
+    };
+
+    me.renderTasksForSearch = function () {
+        var projects = storageData.getAllProjects();
+        if (!projects.length)
+            return;
+        var tasks = storageData.getAllTasks();
+        renderTasks(tasks);
+
+    };
+
+    return me;
+
     function renderProjects(projects) {
         for (var i = 0; i < projects.length; i++) {
             var project = projects[i];
@@ -110,51 +160,6 @@ var render = (function () {
             $('.tasks_wrapper').append($taskSort);
         }
     }
-
-    me.renderProjects = function () {
-        $('.projects').empty();
-        if (!localStorage.length) {
-            $(document).trigger('emptyStorage');
-        } else {
-
-            var projects = storageData.getAllProjects();
-            renderProjects(projects);
-        }
-    };
-
-    me.renderTasks = function () {
-        $tasks.empty();
-        if (!localStorage.length)
-            return;
-
-        var folderId = storageData.getActiveProject();
-        var tasks = storageData.getAllTasksForProject(folderId);
-        if (tasks.length == 0 && folderId) {
-            $tasks.append($message);
-        } else {
-            if (!folderId) {
-                return;
-            } else {
-                $message.remove();
-                renderTasks(tasks);
-            }
-        }
-    };
-
-    me.all = function () {
-        me.renderProjects();
-        me.renderTasks();
-    };
-
-    me.renderTasksForSearch = function () {
-        if (!localStorage.length)
-            return;
-        var tasks = storageData.getAllTasks();
-        renderTasks(tasks);
-
-    };
-
-    return me;
 
 }());
 
